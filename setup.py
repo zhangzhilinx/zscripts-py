@@ -19,7 +19,8 @@ setup(
     install_requires=[
         'argparse>=1.1',
         'numpy>=1.12.0',
-        'opencv-contrib-python>=4.2.0'
+        'opencv-contrib-python>=4.2.0',
+        'pywin32>=226'
     ],
 
     # scripts=[],
