@@ -26,7 +26,7 @@ setup(
     # scripts=[],
     entry_points={
         'console_scripts': [
-            'zscripts-py = zscripts:main'
+            'zsp = zscripts:main'
         ]
     }
 )
