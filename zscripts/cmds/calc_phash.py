@@ -29,6 +29,7 @@ class PHash(object):
 class CmdCalcPHash(object):
     CMD_CALL = 'calc-phash'
     CMD_VER = '0.0.1'
+
     SUPPORTED_EXT = {'.bmp', '.dib',
                      '.jpeg', '.jpg', '.jpe',
                      '.jp2',
@@ -54,23 +55,31 @@ class CmdCalcPHash(object):
                         yield os.path.join(root, file)
 
     def run(self, args):
-        paths = filter(lambda p: os.path.splitext(p)[-1] in self.SUPPORTED_EXT,
-                       self._expand_paths(args.path,
-                                          args.recursive,
-                                          args.follow_symlink)
-                       )
+        paths = filter(
+            lambda p: os.path.splitext(p)[-1] in self.SUPPORTED_EXT,
+            self._expand_paths(args.path,
+                               args.recursive,
+                               args.follow_symlink)
+        )
         for path in paths:
             phash = self.calculator.compute_from_path(path)
             phash = self.calculator.array2str(phash, args.uppercase)
+            if args.move:
+                parent, filename = os.path.split(path)
+                prefix, suffix = os.path.splitext(filename)
+                os.rename(path, os.path.join(parent, phash[0] + suffix))
             print('%s\t%s' % (phash[0], path))
 
     def register_arg_parse(self, parsers):
         # parsers: argparse._SubParsersAction
         parser = parsers.add_parser(
             self.CMD_CALL,
-            help="print the phash of images"
+            help="print the phash of images and provide renaming support"
         )
         parser.add_argument('path', nargs='+')
+        parser.add_argument('-m', '--move',
+                            action='store_true',
+                            help="rename the file name to the corresponding phash value")
         parser.add_argument('-r', '-R', '--recursive',
                             action='store_true',
                             help="process directories and their contents recursively")

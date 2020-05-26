@@ -3,6 +3,7 @@ from typing import List
 
 from zscripts.cmds.calc_phash import CmdCalcPHash
 from zscripts.cmds.get_explorer_paths import CmdGetExplorerPaths
+from zscripts.cmds.pwr import CmdPwr
 from zscripts.cmds.uac import CmdUAC
 
 
@@ -14,6 +15,7 @@ def main(args: List[str] = None):
 
     sub_commands = [CmdCalcPHash(),
                     CmdGetExplorerPaths(),
+                    CmdPwr(),
                     CmdUAC()]
     for sub_command in sub_commands:
         sub_command.register_arg_parse(sub_parsers)

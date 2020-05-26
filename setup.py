@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="zscripts",
-    version="0.0.1",
+    version="0.0.2",
     keywords="scripts",
     description="ZhangZhilin's personal scripts",
     long_description="A set of scripts for my personal use.",
