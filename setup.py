@@ -13,7 +13,7 @@ setup(
     author_email="corex_public@outlook.com",
 
     # packages=find_packages(),
-    packages=['zscripts', 'zscripts.cmds'],
+    packages=['zscripts', 'zscripts.cmds', 'zscripts.core'],
     include_package_data=True,
     platforms="any",
     install_requires=[
