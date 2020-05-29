@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="zscripts",
-    version="0.0.2",
+    version="0.0.3",
     keywords="scripts",
     description="ZhangZhilin's personal scripts",
     long_description="A set of scripts for my personal use.",
@@ -20,7 +20,8 @@ setup(
         'argparse>=1.1',
         'numpy>=1.12.0',
         'opencv-contrib-python>=4.2.0',
-        'pywin32>=226'
+        'pywin32>=226',
+        'watchdog>=0.10.2'
     ],
 
     # scripts=[],
